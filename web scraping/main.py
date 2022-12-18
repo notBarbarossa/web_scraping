@@ -4,7 +4,7 @@ from time import sleep
 
 headers = {"User-Agent": "TuneIn Radio/24.6.0; iPhone11,8; iOS/16.2"}
 
-for count in range(1,8):
+for count in range(1, 8):
     sleep(3)
     url = f"https://scrapingclub.com/exercise/list_basic/?page={count}"
 
@@ -14,26 +14,11 @@ for count in range(1,8):
 
     data = soup.find_all("div", class_="col-lg-4 col-md-6 mb-4")
 
-    for i in data:
 
+    for i in data:
         name = i.find("h4", class_="card-title").text
         price = i.find("h5").text
+        url_img = "https://scrapingclub.com" + i.find('img', class_='card-img-top img-fluid').get('src')
 
-        print(name)
-        print(price)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        print(name + '\n' + price + '\n' + url_img)
 
